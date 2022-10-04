@@ -1,3 +1,3 @@
 <php
-require 'css/'
+require_once
 
