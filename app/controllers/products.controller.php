@@ -1,12 +1,19 @@
 <?php
 
 require_once './app/models/products.models.php';
-require_once './app/views/products.views.php';
-Class ProductsControllers {
+require_once './app/views/products.view.php';
+class ProductsController {
+
     private $model;
     private $view;
+
     public function __construct(){
-       $products= $this->model->getAllProducts();
+       $this->model = new ProductsModel();
+       $this->view = new ProductsView();
+    }
+    
+    public function ShowProducts(){
+        $products= $this->model->getAllProducts();
         $this->view->Showproducts($products);
     }
         

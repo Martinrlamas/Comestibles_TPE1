@@ -1,6 +1,8 @@
 
 
 <?php
-function Showproducts($products){
-    var_dump($products);
-}
+ class ProductsView{
+     function Showproducts($products){
+         var_dump($products);
+     }
+ }
