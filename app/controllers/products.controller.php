@@ -1,20 +1,27 @@
 <?php
 
-require_once './app/models/products.models.php';
+require_once './app/models/products.model.php';
 require_once './app/views/products.view.php';
+require_once './app/models/categoris.model.php';
 class ProductsController {
 
-    private $model;
+    private $modelProducts;
+    private $modelCategoris;
     private $view;
 
     public function __construct(){
-       $this->model = new ProductsModel();
+       $this->modelProducts = new ProductsModel();
+       $this->modelCategoris = new CategorisModel();
        $this->view = new ProductsView();
+
     }
     
     public function ShowProducts(){
-        $products= $this->model->getAllProducts();
+        $products= $this->modelProducts->getAll();
         $this->view->Showproducts($products);
     }
-        
+    public function ShowCaterogis(){
+        $categoris = $this->modelCategoris->getAll();
+        $this->view->ShowCategoris($categoris);
+    }
 }

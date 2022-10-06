@@ -10,14 +10,17 @@ if(!empty($_GET['action'])){
 }
 // parsea la accion Ej: dev/juan -->['dev', juan]
 $params = explode('/', $action);
+// incluyo controlador de Productos y categorias.
 $productsController = new ProductsController();
 
 //tabla de ruteo
     switch ($params[0]){
         case 'home':
             $productsController->Showproducts();
+            $productsController->ShowCaterogis();
             break;
         default:
-            echo('404 page not found');
+            header('HTTP/1.0 404 Not Found');
+            echo('<h1>404 page not found <h1>');
             break;
     }
