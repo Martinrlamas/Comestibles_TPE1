@@ -20,16 +20,15 @@ class ProductsModel{
             
             return $products;
         } 
-          // Devuelve lista de cartegorias completa.
-       public function getAllCategoris(){
+        // Toma todos los productos por su categoria correspondiente.
+        public function getAllProductsWhithCategoris(){
 
-        // Ejecutamos consulta SQL (prepara y execute).
-        $query = $this->db->prepare("SELECT * FROM categorias");
-        $query->execute();
+            //Ejecutamos consulta SQL para productos con categoria (2 tablas).
+            $query = $this->db->prepare("SELECT productos.*, categorias.categoria as categoria FROM productos JOIN categorias ON productos.id_categoria = categorias.id");
+            $query->execute();
 
-        //obtengo los resultados
-        $categoris = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo con todos los productos.
-        
-        return $categoris;
-    }  
+            $categoriproducts = $query->fetchAll(PDO::FETCH_OBJ);
+
+            return $categoriproducts;
+        }
 } 

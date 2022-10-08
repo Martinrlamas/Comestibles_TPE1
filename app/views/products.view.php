@@ -22,4 +22,9 @@
         $this->smarty->assign('categoris', $categoris);
         $this->smarty->display('categoris.tpl');
      }
+     function ShowProductswhithcategori($categoriproducts){
+        //var_dump($categoriproducts);
+        $this->smarty->assign('categoriproducts', $categoriproducts);
+        $this->smarty->display('productswhithcategoris.tpl');
+     }
  }

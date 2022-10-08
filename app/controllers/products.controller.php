@@ -20,6 +20,10 @@ class ProductsController {
         $products= $this->modelProducts->getAll();
         $this->view->Showproducts($products);
     }
+    public function ShowProductswhithcategori(){
+        $categoriproducts = $this->modelProducts->getAllProductsWhithCategoris();
+        $this->view->ShowProductswhithcategori($categoriproducts);
+    }
     public function ShowCaterogis(){
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowCategoris($categoris);
