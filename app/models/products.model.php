@@ -31,4 +31,14 @@ class ProductsModel{
 
             return $categoriproducts;
         }
+         /**
+     * Inserta un producto en la base de datos.
+     */
+    public function InsertProduct($product, $price, $categori) {
+        $query = $this->db->prepare("INSERT INTO productos (nombre, precio, id_categoria) VALUES (?, ?, ?)");
+        $query->execute([$product, $price, $categori]);
+
+        return $this->db->lastInsertId();
+    }
+
 } 

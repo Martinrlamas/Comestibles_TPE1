@@ -24,6 +24,12 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="home">Home</a>
           </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="products">Productos</a>
+            </li>
+            <li>
+            <a class="nav-link" aria-current="page" href="categoris">Categoris</a>
+            </li>
         </ul>
       </div>
     </div>

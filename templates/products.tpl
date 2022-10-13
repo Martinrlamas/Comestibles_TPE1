@@ -1,6 +1,9 @@
 
 {include file="header.tpl"}
 
+<!--Formulario de alta-->
+{include file="form.tpl"}
+
 <!--Lista de productos generada dinamicamente con smarty-->
     <ul class="list-group">
         {foreach from=$products item=$product}

@@ -28,4 +28,14 @@ class ProductsController {
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowCategoris($categoris);
     }
+    //public function AddProduct(){
+        // Validar Producto.
+
+        // $product = $_POST['product'];
+        // $price = $_POST['price'];
+        // $categori = $_POST['categori'];
+        // $id = $this->modelProducts->InsertProduct($product, $price, $categori);
+
+        // header("Location: " . BASE_URL);
+    //}
 }

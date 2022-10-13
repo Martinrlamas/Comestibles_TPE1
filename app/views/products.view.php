@@ -11,19 +11,21 @@
     }
 
      function Showproducts($products){
-         //var_dump($products);
+      
          //asigno variables a smarty.
+
         $this->smarty->assign('products', $products);
         $this->smarty->display('products.tpl');
      }
 
      function ShowCategoris($categoris){
-        //var_dump($categoris);
+
         $this->smarty->assign('categoris', $categoris);
         $this->smarty->display('categoris.tpl');
+        $this->smarty->display('form.tpl');
      }
      function ShowProductswhithcategori($categoriproducts){
-        //var_dump($categoriproducts);
+
         $this->smarty->assign('categoriproducts', $categoriproducts);
         $this->smarty->display('productswhithcategoris.tpl');
      }
