@@ -7,21 +7,21 @@
     <title>Form Products</title>
 </head>
 <body>
-    <form action="add" method="POST" class="my-4">
+<form action="add" method="POST" class="my-4">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
                 <label>Producto</label>
-                <input name="Product" type="text" class="form-control">
+                <input name="producto" type="text" class="form-control" required>
                 <label>Precio</label>
-                <input name="Price" type="number" class="form-control">
+                <input name="precio" type="number" min="1" class="form-control" required>
             </div>
         </div>
 
         <div class="col-3">
             <div class="form-group">
                 <label>Categoria</label>
-                <select name="Categori" class="form-control">
+                <select name="categoria" class="form-control">
                    {foreach from=$categoris item=$categori}
                     <option value="{$categori->id}">{$categori->categoria}</option>
                    {/foreach}
@@ -30,5 +30,5 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+    <button type="submit" class="btn btn-primary mt-2">Agregar</button>
 </form>

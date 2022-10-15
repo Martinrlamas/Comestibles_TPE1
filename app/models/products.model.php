@@ -41,4 +41,8 @@ class ProductsModel{
         return $this->db->lastInsertId();
     }
 
+    public function DeleteProductByID($id){
+        $query = $this->db->prepare('DELETE FROM productos WHERE id = ?');
+        $query->execute([$id]);
+    }
 } 

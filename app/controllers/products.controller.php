@@ -34,12 +34,17 @@ class ProductsController {
     public function AddProduct(){
         // Validar Producto.
 
-         $product = $_POST['Product'];
-         $price = $_POST['Price'];
-         $categori = $_POST['Categori'];
-         
-         $this->modelProducts->InsertProduct($product, $price, $categori);
+         $product = $_POST['producto'];
+         $price = $_POST['precio'];
+         $categori = $_POST['categoria'];
+
+        $id = $this->modelProducts->InsertProduct($product, $price, $categori);
 
          header("Location: " . BASE_URL);
+    }
+    public function DeleteProduct($id){
+        $this->modelProducts->DeleteProductByID($id);
+        
+        header("Location: " . BASE_URL);
     }
 }

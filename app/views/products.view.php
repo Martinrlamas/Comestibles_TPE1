@@ -17,7 +17,6 @@
         $this->smarty->assign('products', $products);
         $this->smarty->assign('categoris', $categoris);
         $this->smarty->display('products.tpl');
-        $this->smarty->display('form.tpl');
 
      }
 
