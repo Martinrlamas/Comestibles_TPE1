@@ -26,9 +26,9 @@ $params = explode('/', $action);
                 $productsController = new ProductsController();
                 $productsController->ShowProductswhithcategori();
                 break;
-            // case 'add':
-            //     $productsController = new ProductsController();
-            //     $productsController->AddProduct();
+             case 'add':
+                 $productsController = new ProductsController();
+                 $productsController->AddProduct();
         default:
             header('HTTP/1.0 404 Not Found');
             echo('<h1>404 page not found <h1>');

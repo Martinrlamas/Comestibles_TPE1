@@ -18,7 +18,9 @@ class ProductsController {
     
     public function ShowProducts(){
         $products= $this->modelProducts->getAll();
-        $this->view->Showproducts($products);
+        //Pasamos las categorias por parametro para el formulario
+        $categoris = $this->modelCategoris->getAll();
+        $this->view->Showproducts($products, $categoris);
     }
     public function ShowProductswhithcategori(){
         $categoriproducts = $this->modelProducts->getAllProductsWhithCategoris();
@@ -28,18 +30,16 @@ class ProductsController {
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowCategoris($categoris);
     }
-    public function ShowForm(){
-        $categoris = $this->modelCategoris->getAll();
-        $this->view->ShowForm($categoris);
-    }
-    //public function AddProduct(){
+
+    public function AddProduct(){
         // Validar Producto.
 
-        // $product = $_POST['product'];
-        // $price = $_POST['price'];
-        // $categori = $_POST['categori'];
-        // $id = $this->modelProducts->InsertProduct($product, $price, $categori);
+         $product = $_POST['Product'];
+         $price = $_POST['Price'];
+         $categori = $_POST['Categori'];
+         
+         $this->modelProducts->InsertProduct($product, $price, $categori);
 
-        // header("Location: " . BASE_URL);
-    //}
+         header("Location: " . BASE_URL);
+    }
 }

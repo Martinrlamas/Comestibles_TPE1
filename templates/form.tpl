@@ -7,23 +7,12 @@
     <title>Form Products</title>
 </head>
 <body>
-    {* <form>
-        <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Producto</label>
-        <input type="email" class="form-control" id="inputProducts" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="InputPrecio">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form> *}
     <form action="add" method="POST" class="my-4">
     <div class="row">
         <div class="col-4">
             <div class="form-group">
                 <label>Producto</label>
-                <input name="Producto" type="text" class="form-control">
+                <input name="Product" type="text" class="form-control">
                 <label>Precio</label>
                 <input name="Price" type="number" class="form-control">
             </div>
@@ -32,7 +21,7 @@
         <div class="col-3">
             <div class="form-group">
                 <label>Categoria</label>
-                <select name="priority" class="form-control">
+                <select name="Categori" class="form-control">
                    {foreach from=$categoris item=$categori}
                     <option value="{$categori->id}">{$categori->categoria}</option>
                    {/foreach}

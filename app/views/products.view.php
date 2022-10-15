@@ -10,12 +10,15 @@
         $this->smarty = new Smarty(); 
     }
 
-     function Showproducts($products){
+     function Showproducts($products, $categoris){
       
          //asigno variables a smarty.
 
         $this->smarty->assign('products', $products);
+        $this->smarty->assign('categoris', $categoris);
         $this->smarty->display('products.tpl');
+        $this->smarty->display('form.tpl');
+
      }
 
      function ShowCategoris($categoris){
@@ -27,9 +30,5 @@
 
         $this->smarty->assign('categoriproducts', $categoriproducts);
         $this->smarty->display('productswhithcategoris.tpl');
-     }
-     function ShowForm($categoris){
-      $this->smarty->assign('categoris', $categoris);
-      $this->smarty->display('form.tpl');
      }
  }
