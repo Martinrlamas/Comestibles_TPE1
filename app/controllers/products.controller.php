@@ -28,6 +28,10 @@ class ProductsController {
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowCategoris($categoris);
     }
+    public function ShowForm(){
+        $categoris = $this->modelCategoris->getAll();
+        $this->view->ShowForm($categoris);
+    }
     //public function AddProduct(){
         // Validar Producto.
 

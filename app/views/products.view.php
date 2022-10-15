@@ -22,11 +22,14 @@
 
         $this->smarty->assign('categoris', $categoris);
         $this->smarty->display('categoris.tpl');
-        $this->smarty->display('form.tpl');
      }
      function ShowProductswhithcategori($categoriproducts){
 
         $this->smarty->assign('categoriproducts', $categoriproducts);
         $this->smarty->display('productswhithcategoris.tpl');
+     }
+     function ShowForm($categoris){
+      $this->smarty->assign('categoris', $categoris);
+      $this->smarty->display('form.tpl');
      }
  }

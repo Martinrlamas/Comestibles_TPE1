@@ -8,7 +8,7 @@
     <ul class="list-group">
         {foreach from=$products item=$product}
             <li class="">
-            <a href="home/{$product->id_producto}" class="list-group-item list-group-item-action">{$product->nombre} ${$product->precio}</a>
+            <a href="products/{$product->id}" class="list-group-item list-group-item-action">{$product->producto} ${$product->precio}</a>
             </li>
             
         {/foreach}
