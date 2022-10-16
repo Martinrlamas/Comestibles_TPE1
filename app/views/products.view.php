@@ -30,4 +30,10 @@
         $this->smarty->assign('categoriproducts', $categoriproducts);
         $this->smarty->display('productswhithcategoris.tpl');
      }
+      function ShowEditProductForm($producteditable, $categoris){
+         //traemos el producto con todos sus datos y los datos de categoria para modificarlos
+         $this->smarty->assign('product', $producteditable);
+         $this->smarty->assign('categoris', $categoris);
+         $this->smarty->display('product.edit.tpl');
+      }
  }

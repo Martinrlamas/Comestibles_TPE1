@@ -2,7 +2,7 @@
 {include file="header.tpl"}
 
 <!--Formulario de alta-->
-{include file="form.tpl"}
+{include file="form.insert.Products.tpl"}
 
 <!--Lista de productos generada dinamicamente con smarty-->
     <ul class="list-group">
@@ -13,7 +13,7 @@
                 <a href='delete/{$product->id}' type="button" class="btn btn-outline-danger">Borrar</a>
                 </div>
                 <div>
-                <a href='edit/{$product->id}'  type="button" class="btn btn-outline-warning">Editar</a>
+                <a href='productedit/{$product->id}'  type="button" class="btn btn-outline-warning">Editar</a>
                 </div>
             </li>
             

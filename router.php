@@ -40,11 +40,12 @@ $params = explode('/', $action);
                 $id = $params[1];
                 $productsController->DeleteProduct($id);
                 break;
-            case 'edit':
+            case 'productedit':
                 $productsController = new ProductsController();
-                $id = $param[1];
-                $productsController->EditProduct($id);
+                $id = $params[1];
+                $productsController->ShowEditProductForm($id);
                 break;
+            
         default:
             header('HTTP/1.0 404 Not Found');
             echo('<h1>404 page not found <h1>');

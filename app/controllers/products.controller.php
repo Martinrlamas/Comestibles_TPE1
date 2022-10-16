@@ -10,6 +10,7 @@ class ProductsController {
     private $view;
 
     public function __construct(){
+
        $this->modelProducts = new ProductsModel();
        $this->modelCategoris = new CategorisModel();
        $this->view = new ProductsView();
@@ -19,14 +20,19 @@ class ProductsController {
     public function ShowProducts(){
         $products= $this->modelProducts->getAll();
         //Pasamos las categorias por parametro para el formulario
+
         $categoris = $this->modelCategoris->getAll();
         $this->view->Showproducts($products, $categoris);
     }
+
     public function ShowProductswhithcategori(){
+
         $categoriproducts = $this->modelProducts->getAllProductsWhithCategoris();
         $this->view->ShowProductswhithcategori($categoriproducts);
     }
+
     public function ShowCaterogis(){
+
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowCategoris($categoris);
     }
@@ -46,5 +52,18 @@ class ProductsController {
         $this->modelProducts->DeleteProductByID($id);
         
         header("Location: " . BASE_URL);
+    }
+    // public function EditProductByID($id){
+    //     if(!isset($_GET[$id])){
+    //         //Mensaje no se encontro id... #code...
+    //         header('Location:'. BASE_URL);
+    //         die();
+    //     }
+    //     $this->modelProducts->ProductEditByID($id);
+    // }
+    public function ShowEditProductForm($id){
+        $producteditable = $this->modelProducts->ProductEditByID($id);
+        $categoris = $this->modelCategoris->getAll();
+        $this->view->ShowEditProductForm($producteditable, $categoris);
     }
 }

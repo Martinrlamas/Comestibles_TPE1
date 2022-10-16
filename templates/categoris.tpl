@@ -2,14 +2,14 @@
 
 
 <!-- Formulario de alta -->
-{include file='form.tpl'}
+{include file='form.insert.Products.tpl'}
 <ul>
-
-{foreach from= $categoris item= $categori}
-    <li>
-    <a>{$categori->categoria}<a>
-    </li>
-{/foreach}
+    {foreach from= $categoris item= $categori}
+        <li>
+        <a>{$categori->categoria}<a>
+        </li>
+    {/foreach}
+</ul>
 
 
 {include file='footer.tpl'}
