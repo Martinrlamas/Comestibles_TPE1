@@ -20,4 +20,39 @@
         {/foreach}
         
     </ul>
+    <table class="table table-dark table-striped">
+    <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Accion</th>
+            </tr>
+    </thead>
+    <tbody>
+    {foreach from=$products item=$product key=$cuantos}
+            
+        <a href="products/{$product->id}">
+        <tr>
+            <th scope="row">{$cuantos}</th>
+            <td>{$product->producto}</td>
+            <td>${$product->precio}</td>
+            <td>{$product->categoria}</td>
+            <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div>
+                <a href='delete/{$product->id}' type="button" class="btn btn-outline-danger">Borrar</a>
+                </div>
+                <div>
+                <a href='productedit/{$product->id}'  type="button" class="btn btn-outline-warning">Editar</a>
+                </div>
+                <div>
+                <a href="products/{$product->id}" type="button" class="btn btn-outline-info">Info</a>
+                </div>
+            </td>
+        </tr>
+        </a>
+    {/foreach}
+    </tbody>
+</table>
 {include file="footer.tpl"}

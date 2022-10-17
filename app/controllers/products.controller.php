@@ -66,4 +66,14 @@ class ProductsController {
         $categoris = $this->modelCategoris->getAll();
         $this->view->ShowEditProductForm($producteditable, $categoris);
     }
+     public function InsertProductEditByID(){
+        if(empty($_POST)){
+            $producto = $_POST['producto'];
+            $precio = $_POST['precio'];
+            $categoria= $_POST['categoria'];
+        }
+        $this->modelProducts->EditProductByID($producto,$precio,$categoria);
+
+        header("Location: " . BASE_URL);
+     } 
 }

@@ -12,7 +12,9 @@ class ProductsModel{
        public function getAll(){
 
             // Ejecutamos consulta SQL (prepara y execute).
-            $query = $this->db->prepare("SELECT * FROM productos");
+            $query = $this->db->prepare("SELECT productos.*, categorias.categoria
+                                         as categoria FROM productos JOIN categorias
+                                         ON productos.id_categoria = categorias.id");
             $query->execute();
 
             //obtengo los resultados
@@ -72,7 +74,12 @@ class ProductsModel{
     // Seteamos los campos a modificar y mediante su id modificamos los campos.
 
         $query = $this->db->prepare('UPDATE FROM productos SET producto = ?, 
-                                    precio = ?, id_categoria= ? WHERE id = ?');
+                                    precio = ?, id_categoria= ? WHERE id = ? VALUE (?,?,?)');
         $query->execute([$producto, $precio, $categoria]);
+    }
+
+
+    public function pagination(){
+        
     }
 } 
