@@ -67,12 +67,15 @@ class ProductsController {
         $this->view->ShowEditProductForm($producteditable, $categoris);
     }
      public function InsertProductEditByID(){
-        if(empty($_POST)){
+       // if(!empty($_POST['producto']||$_POST['precio']
+       //     ||$_POST['categoria']||$_POST['id_producto'])){
+        // MENSAJE DE ERROR
             $producto = $_POST['producto'];
-            $precio = $_POST['precio'];
-            $categoria= $_POST['categoria'];
-        }
-        $this->modelProducts->EditProductByID($producto,$precio,$categoria);
+            $precio = (int)$_POST['precio'];
+            $categoria = (int)$_POST['categoria'];
+            $id = (int)$_POST['id_producto'];
+        //}
+        $this->modelProducts->EditProductByID($producto,$precio,$categoria,$id);
 
         header("Location: " . BASE_URL);
      } 

@@ -45,10 +45,9 @@ $params = explode('/', $action);
                 $id = $params[1];
                 $productsController->ShowEditProductForm($id);
                 break;
-            case 'insertedit':
+            case 'insertproductedit':
                 $productsController = new ProductsController();
-                $id = $params[1];
-                $productsController->InsertProductEditByID($id);
+                $productsController->InsertProductEditByID();
                 break;
         default:
             header('HTTP/1.0 404 Not Found');
