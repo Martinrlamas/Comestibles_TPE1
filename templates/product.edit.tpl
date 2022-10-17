@@ -15,7 +15,7 @@
             {/foreach}
         </select>
     </div>
-    <input type="hidden" name="id_producto" value="{$product->id}">
+    <input type="hidden" name="id" value="{$product->id}">
     <button type="submit" class="btn btn-success">Editar</button>
 </form>
 

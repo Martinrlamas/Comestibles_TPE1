@@ -10,30 +10,40 @@
         $this->smarty = new Smarty(); 
     }
 
-     function Showproducts($products, $categoris){
+     function Showproducts($products, $categories){
       
          //asigno variables a smarty.
 
         $this->smarty->assign('products', $products);
-        $this->smarty->assign('categoris', $categoris);
+        $this->smarty->assign('categories', $categories);
         $this->smarty->display('products.tpl');
 
      }
 
-     function ShowCategoris($categoris){
+     function ShowCategories($categories){
 
-        $this->smarty->assign('categoris', $categoris);
-        $this->smarty->display('categoris.tpl');
+        $this->smarty->assign('categories', $categories);
+        $this->smarty->display('categories.tpl');
      }
-     function ShowProductswhithcategori($categoriproducts){
 
-        $this->smarty->assign('categoriproducts', $categoriproducts);
+     function ShowProductswhithcategorie($categorieproducts){
+
+        $this->smarty->assign('categorieproducts', $categorieproducts);
         $this->smarty->display('productswhithcategoris.tpl');
      }
-      function ShowEditProductForm($producteditable, $categoris){
+
+      function ShowEditProductForm($producteditable, $categories){
+
          //traemos el producto con todos sus datos y los datos de categoria para modificarlos
+        
          $this->smarty->assign('product', $producteditable);
-         $this->smarty->assign('categoris', $categoris);
+         $this->smarty->assign('categories', $categories);
          $this->smarty->display('product.edit.tpl');
+      }
+
+      function ShowEditCategorieForm($categoriaeditable){
+
+         $this->smarty->assign('categorie', $categoriaeditable);
+         $this->smarty->display('categorie.edit.tpl');
       }
  }

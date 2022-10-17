@@ -23,7 +23,7 @@ class ProductsModel{
             return $products;
         } 
         // Toma todos los productos por su categoria correspondiente.
-        public function getAllProductsWhithCategoris(){
+        public function getAllProductsWhithCategories(){
 
             //Ejecutamos consulta SQL para productos con categoria (2 tablas).
             $query = $this->db->prepare("SELECT productos.*, categorias.categoria
@@ -31,20 +31,19 @@ class ProductsModel{
                                          ON productos.id_categoria = categorias.id");
             $query->execute();
 
-            $categoriproducts = $query->fetchAll(PDO::FETCH_OBJ);
+            $categorieproducts = $query->fetchAll(PDO::FETCH_OBJ);
 
-            return $categoriproducts;
+            return $categorieproducts;
         }
 
      //Inserta un producto en la base de datos.
 
-    public function InsertProduct($product, $price, $categori) {
+    public function InsertProduct($product, $price, $categorie) {
 
         $query = $this->db->prepare("INSERT INTO productos (producto,
                                      precio, id_categoria) VALUES (?, ?, ?)");
-        $query->execute([$product, $price, $categori]);
+        $query->execute([$product, $price, $categorie]);
 
-        return $this->db->lastInsertId();
     }
 
 

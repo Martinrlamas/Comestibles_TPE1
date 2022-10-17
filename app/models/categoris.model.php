@@ -7,6 +7,7 @@
              //Abrimos conexion con la base de datos
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_comestibles;charset=utf8', 'root', '');
         }
+
         // Devuelve lista de cartegorias completa.
         public function getAll(){
     
@@ -20,4 +21,37 @@
             return $categoris;
         }  
 
+        public function InsertCategorieEditByID($categorie){
+            $query=$this->db->prepare("INSERT INTO categorias (categoria) VALUES (?)");
+            $query->execute([$categorie]);
+
+        }
+
+        public function DeleteCategorieByID($id){
+
+            $query = $this->db->prepare('DELETE FROM categorias WHERE id = ?');
+            $query->execute([$id]);
+        }
+        public function CategorieEditByID($id){
+        //Llamamos todos los datos donde el ID sea el igual al solicitado.
+
+        $query = $this->db->prepare("SELECT * FROM categorias WHERE id = ?");
+        $query->execute([$id]);
+
+        //Almacenamos los datos extraidos en una variable (forma de arreglo).
+
+        $categoriaeditable = $query->fetch(PDO::FETCH_OBJ);
+
+        return $categoriaeditable;
+        }
+
+       public function InsertEditCategorieByID($categoria,$id){
+
+            // Seteamos los campos a modificar y mediante su id modificamos los campos.
+        
+            $query = $this->db->prepare('UPDATE categorias SET categoria = ?
+                                            WHERE id = ?');
+            $query->execute([$categoria, $id]);
+
     }
+}

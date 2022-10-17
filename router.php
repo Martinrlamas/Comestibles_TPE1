@@ -18,37 +18,82 @@ $params = explode('/', $action);
             $productsController = new ProductsController();
             $productsController->Showproducts();
             break;
+        
+        case 'categories':
+            $productsController = new ProductsController();
+            $productsController->ShowCaterogies();
+            
+            break;
+            
+        case 'categorie':
+            $productController = new ProductsController();
+            $productsController->ShowCategorie();
 
-            case 'categoris':
-                $productsController = new ProductsController();
-                 $productsController->ShowCaterogis();
-                break;
+            break;
+                
+        case 'productscategories':
+            $productsController = new ProductsController();
+            $productsController->ShowProductswhithcategorie();
 
-            case 'productscategoris':
-                $productsController = new ProductsController();
-                $productsController->ShowProductswhithcategori();
-                break;
+            break;
 
-             case 'add':
-                 $productsController = new ProductsController();
-                 $productsController->AddProduct();
-                 break;
+        case 'addproduct':
+            $productsController = new ProductsController();
+            $productsController->AddProduct();
 
-             case 'delete':
-                $productsController = new ProductsController();
-            // Obtengo parametro de la accion.
-                $id = $params[1];
-                $productsController->DeleteProduct($id);
-                break;
-            case 'productedit':
-                $productsController = new ProductsController();
-                $id = $params[1];
-                $productsController->ShowEditProductForm($id);
-                break;
-            case 'insertproductedit':
-                $productsController = new ProductsController();
-                $productsController->InsertProductEditByID();
-                break;
+            break;
+
+        case 'addcategorie':
+            $productsController = new ProductsController();
+            $productsController->AddCategorie();
+
+            break;
+
+            case 'deleteproduct':
+            $productsController = new ProductsController();
+
+              // Obtengo parametro de la accion.
+
+            $id = $params[1];
+            $productsController->DeleteProduct($id);
+
+            break;
+
+        case 'deletecategorie':
+            $productsController = new ProductsController();
+
+                // Obtengo parametro de la accion.
+
+            $id = $params[1];
+            $productsController->DeleteCategorie($id);
+
+            break;
+
+        case 'productedit':
+            $productsController = new ProductsController();
+            $id = $params[1];
+            $productsController->ShowEditProductForm($id);
+
+            break;
+
+
+        case 'insertproductedit':
+            $productsController = new ProductsController();
+            $productsController->InsertProductEditByID();
+
+            break;
+
+        case 'categoriedit':
+            $productsController = new ProductsController();
+            $id = $params[1];
+            $productsController->ShowEditCategoriForm($id);
+
+            break;
+            
+        case 'insertcategoriedit':
+            $productsController = new ProductsController();
+            $productsController->InsertCategoriEditByID();
+            break;
         default:
             header('HTTP/1.0 404 Not Found');
             echo('<h1>404 page not found <h1>');

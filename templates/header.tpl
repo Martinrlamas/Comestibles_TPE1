@@ -25,7 +25,7 @@
               <a class="nav-link" aria-current="page" href="products">Productos</a>
             </li>
             <li>
-            <a class="nav-link" aria-current="page" href="categoris">Categoris</a>
+            <a class="nav-link" aria-current="page" href="categories">Categoris</a>
             </li>
         </ul>
       </div>
