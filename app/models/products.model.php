@@ -68,12 +68,12 @@ class ProductsModel{
     }
 
 
-    public function EditProductByID($producto,$precio,$categoria,$id){
+    public function InsertEditProductByID($producto,$precio,$categoria,$id){
 
     // Seteamos los campos a modificar y mediante su id modificamos los campos.
 
         $query = $this->db->prepare('UPDATE productos SET producto = ?,
-                                    precio= ?, id_categoria = ?
+                                    precio =?, id_categoria = ?
                                      WHERE id = ?');
         $query->execute([$producto, $precio, $categoria, $id]);
     }

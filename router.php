@@ -1,6 +1,7 @@
 <?php
 // traemos nuestro controlador para enrutarlo
 require_once './app/controllers/products.controller.php';
+require_once './app/controllers/AuthController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -14,6 +15,18 @@ $params = explode('/', $action);
 
 //tabla de ruteo
     switch ($params[0]){
+        case 'login':
+            $authController = new AuthController();
+            $authController->ShowFormLogin();
+            break;
+        case 'validate':
+            $authController = new AuthController();
+            $authController->ValidateUser();
+            break;
+        case 'loguot':
+            $authController = new AuthController();
+            $authController->Loguot();
+            break;
         case 'products':
             $productsController = new ProductsController();
             $productsController->Showproducts();

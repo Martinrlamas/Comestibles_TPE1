@@ -11,16 +11,16 @@
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
-                    <label>Producto</label>
+                    <label for="producto">Producto</label>
                     <input name="producto" type="text" class="form-control" required>
-                    <label>Precio</label>
+                    <label for="precio">Precio</label>
                     <input name="precio" type="number" min="1" class="form-control" required>
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="form-group">
-                    <label>Categoria</label>
+                    <label for="categoria">Categoria</label>
                     <select name="categoria" class="form-control">
                     {foreach from=$categories item=$categorie}
                         <option value="{$categorie->id}">{$categorie->categoria}</option>

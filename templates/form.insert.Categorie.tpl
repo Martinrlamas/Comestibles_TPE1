@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="addcategorie" method="POST">
-        <label>Nueva Categoria:</label>
+        <label for="categorie">Nueva Categoria:</label>
 
         <input type="text" name="categorie" required/>
         <button href="addcategorie" type="submit" class="">Crear</button>

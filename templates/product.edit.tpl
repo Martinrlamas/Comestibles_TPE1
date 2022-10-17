@@ -10,8 +10,8 @@
     <input type="number" min="1" name="precio" value="{$product->precio}" required/>
     <div>
         <select name="categoria" class="form-control">
-             {foreach from=$categoris item=$categori}
-                <option value="{$categori->id}">{$categori->categoria}</option>
+             {foreach from=$categories item=$categorie}
+                <option value="{$categorie->id}">{$categorie->categoria}</option>
             {/foreach}
         </select>
     </div>
