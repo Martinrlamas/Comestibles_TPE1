@@ -25,27 +25,14 @@ class ProductsModel{
         
         public function GET($id){
             $query = $this->db->prepare('SELECT productos.*, categorias.categoria
-                                        FROM productos JOIN categorias
-                                        ON productos.id_categoria = categorias.id 
-                                        WHERE productos.id = ?');
+                                         FROM productos JOIN categorias
+                                            ON productos.id_categoria = categorias.id 
+                                         WHERE productos.id = ?');
             $query->execute([$id]);
 
             $product = $query->fetch(PDO::FETCH_OBJ);
             
             return $product;
-        }
-        // Toma todos los productos por su categoria correspondiente.
-        public function getAllProductsWhithCategories(){
-
-            //Ejecutamos consulta SQL para productos con categoria (2 tablas).
-            $query = $this->db->prepare("SELECT productos.*, categorias.categoria
-                                         as categoria FROM productos JOIN categorias
-                                         ON productos.id_categoria = categorias.id");
-            $query->execute();
-
-            $categorieproducts = $query->fetchAll(PDO::FETCH_OBJ);
-
-            return $categorieproducts;
         }
 
      //Inserta un producto en la base de datos.
@@ -88,10 +75,5 @@ class ProductsModel{
                                     precio =?, id_categoria = ?
                                      WHERE id = ?');
         $query->execute([$producto, $precio, $categoria, $id]);
-    }
-
-
-    public function pagination(){
-        
     }
 } 

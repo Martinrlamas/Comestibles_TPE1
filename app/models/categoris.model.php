@@ -21,6 +21,18 @@
             return $categoris;
         }  
 
+        public function GET($id){
+            $query = $this->db->prepare('SELECT productos.*, categorias.categoria
+                                        as categoria FROM productos JOIN categorias ON 
+                                        productos.id_categoria = categorias.id
+                                        WHERE id_categoria = ?');
+        $query->execute([$id]);
+
+        $products = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $products;
+        }
+
         public function InsertCategorieEditByID($categorie){
             $query=$this->db->prepare("INSERT INTO categorias (categoria) VALUES (?)");
             $query->execute([$categorie]);

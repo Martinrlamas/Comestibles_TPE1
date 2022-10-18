@@ -48,15 +48,10 @@ $params = explode('/', $action);
             
         case 'categorie':
             $productController = new ProductsController();
-            $productsController->ShowCategorie();
+            $id = $params[1];
+            $productController->ShowCategorie($id);
 
             break;
-                
-        // case 'productscategories':
-        //     $productsController = new ProductsController();
-        //     $productsController->ShowProductswhithcategorie();
-
-        //     break;
 
         case 'addproduct':
             $productsController = new ProductsController();

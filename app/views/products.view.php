@@ -53,4 +53,8 @@
          $this->smarty->assign('product', $product);
          $this->smarty->display('product.tpl');
       }
+      public function ShowCategorie($categorie){
+         $this->smarty->assign('categorie', $categorie);
+         $this->smarty->display('categorie.tpl');
+      }
  }

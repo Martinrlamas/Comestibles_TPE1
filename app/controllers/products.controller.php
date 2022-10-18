@@ -34,14 +34,12 @@ class ProductsController {
         
     }
 
-    // public function ShowProductswhithcategorie(){
-
-    //     $categorieproducts = $this->modelProducts->getAllProductsWhithCategories();
-    //     $this->view->ShowProductswhithcategorie($categorieproducts);
-    // }
+    public function ShowCategorie($id){
+        $categorie = $this->modelCategories->GET($id);
+        $this->view->ShowCategorie($categorie);
+    }
 
     public function ShowCaterogies(){
-
         $categories = $this->modelCategories->getAll();
         $this->view->ShowCategories($categories, $this->helper->checkLoggedIn());
     }
