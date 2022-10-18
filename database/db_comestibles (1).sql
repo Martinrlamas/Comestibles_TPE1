@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2022 a las 20:38:29
+-- Tiempo de generación: 18-10-2022 a las 05:03:28
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `categoria` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla de categorias sobre comestibles';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -53,7 +53,7 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
-  `producto` varchar(150) NOT NULL,
+  `producto` varchar(100) NOT NULL,
   `precio` decimal(20,0) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -107,6 +107,25 @@ INSERT INTO `productos` (`id`, `producto`, `precio`, `id_categoria`) VALUES
 (48, 'Pan Lactal', '516', 5),
 (49, 'Pan rallado Molto', '107', 5);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `password`) VALUES
+(1, 'administrador@admin.com', '$2a$12$NKHIftZdd45oc1nIRYdf8O/6D02MxdPid2lArDGtvKao8D/tBZ7OG');
+
 --
 -- Índices para tablas volcadas
 --
@@ -125,14 +144,32 @@ ALTER TABLE `productos`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -142,7 +179,7 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
