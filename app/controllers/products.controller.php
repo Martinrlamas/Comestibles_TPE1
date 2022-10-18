@@ -75,14 +75,6 @@ class ProductsController {
             header("Location: " .BASE_URL. "login");
         }
     }
-    // public function EditProductByID($id){
-    //     if(!isset($_GET[$id])){
-    //         //Mensaje no se encontro id... #code...
-    //         header('Location:'. BASE_URL);
-    //         die();
-    //     }
-    //     $this->modelProducts->ProductEditByID($id);
-    // }
     public function ShowEditProductForm($id){
 
         $admin = $this->helper->checkLoggedIn();
@@ -106,17 +98,20 @@ class ProductsController {
         $admin = $this->helper->checkLoggedIn();
         if($admin){
 
-       // if(!empty($_POST['producto']||$_POST['precio']
-       //     ||$_POST['categoria']||$_POST['id_producto'])){
-        // MENSAJE DE ERROR
-            $producto = $_POST['producto'];
-            $precio = (int)$_POST['precio'];
-            $categoria = (int)$_POST['categoria'];
-            $id = (int)$_POST['id'];
-        //}
-        $this->modelProducts->InsertEditProductByID($producto,$precio,$categoria,$id);
+    //    if(!empty($_POST['producto']||$_POST['precio']
+    //         ||$_POST['categoria']||$_POST['id_producto'])){
 
-        header("Location: " . BASE_URL);
+    //             header("Location: " .BASE_URL. "products");
+
+    //         }else{
+                $producto = $_POST['producto'];
+                $precio = (int)$_POST['precio'];
+                $categoria = (int)$_POST['categoria'];
+                $id = (int)$_POST['id'];
+            $this->modelProducts->InsertEditProductByID($producto,$precio,$categoria,$id);
+    
+            header("Location: " . BASE_URL);
+            // }
        }
        else{
         header("Location: " .BASE_URL. "login");
@@ -139,9 +134,14 @@ class ProductsController {
     }
 
     public function InsertCategoriEditByID(){
-        // Determinar si no se envia una cadena vacia
+        // if(!empty($_POST['categoria'])||!empty((int)$_POST['id'])){
+        //     header("Location: " .BASE_URL);
+        // }else{
             $categoria = $_POST['categoria'];
             $id = (int)$_POST['id'];
+
+        // }
+
 
         $this->modelCategories->InsertEditCategorieByID($categoria,$id);
 
@@ -168,11 +168,11 @@ class ProductsController {
 
         $admin = $this->helper->checkLoggedIn();
         if($admin){
-        // Si la categoria contiene un arreglo devolver mensaje de no se puede borrar.
+           $products = $this->modelCategories->GET($id);
+               $this->modelCategories->DeleteCategorieByID($id);
+               
+               header("Location: " .BASE_URL ."categories");
 
-        $this->modelCategories->DeleteCategorieByID($id);
-        
-        header("Location: " .BASE_URL ."categories");
 
         } else{
 
