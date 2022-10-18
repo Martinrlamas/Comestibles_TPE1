@@ -52,7 +52,7 @@
                 </div>
             {/if}
                 <div>
-                <a href="products/{$product->id}" type="button" class="btn btn-outline-info">Info</a>
+                <a href="product/{$product->id}" type="button" class="btn btn-outline-info">Info</a>
                 </div>
             </td>
         </tr>

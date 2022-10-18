@@ -22,8 +22,17 @@ class ProductsModel{
             
             return $products;
         } 
-        public function GET(){
-            $query = $this->db->prepare("SELECT ");
+        
+        public function GET($id){
+            $query = $this->db->prepare('SELECT productos.*, categorias.categoria
+                                        FROM productos JOIN categorias
+                                        ON productos.id_categoria = categorias.id 
+                                        WHERE productos.id = ?');
+            $query->execute([$id]);
+
+            $product = $query->fetch(PDO::FETCH_OBJ);
+            
+            return $product;
         }
         // Toma todos los productos por su categoria correspondiente.
         public function getAllProductsWhithCategories(){

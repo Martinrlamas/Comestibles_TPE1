@@ -28,6 +28,12 @@ class ProductsController {
         $this->view->Showproducts($products, $categories,$this->helper->checkLoggedIn());
     }
 
+    public function ShowProduct($id){
+       $product = $this->modelProducts->GET($id);
+        $this->view->ShowProduct($product);
+        
+    }
+
     // public function ShowProductswhithcategorie(){
 
     //     $categorieproducts = $this->modelProducts->getAllProductsWhithCategories();
@@ -171,7 +177,7 @@ class ProductsController {
         header("Location: " .BASE_URL ."categories");
 
         } else{
-            
+
              header("Location: " .BASE_URL. "login");
         }
     }

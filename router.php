@@ -37,9 +37,9 @@ $params = explode('/', $action);
             break;
         case 'product':
             $productsController = new ProductsController();
-            $id = $params[1];
+            $id= $params[1];
             $productsController->ShowProduct($id);
-        
+            break;
         case 'categories':
             $productsController = new ProductsController();
             $productsController->ShowCaterogies();
