@@ -2,7 +2,9 @@
 {include file="header.tpl"}
 
 <!--Formulario de alta-->
-{include file="form.insert.Products.tpl"}
+{if $admin}
+    {include file="form.insert.Products.tpl"}
+{/if}
 
 <!--Lista de productos generada dinamicamente con smarty-->
     {* <ul class="list-group">
@@ -28,6 +30,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Accion</th>
+
             </tr>
     </thead>
     <tbody>
@@ -40,12 +43,14 @@
             <td>${$product->precio}</td>
             <td>{$product->categoria}</td>
             <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+            {if $admin}
                 <div>
                 <a href='deleteproduct/{$product->id}' type="button" class="btn btn-outline-danger">Borrar</a>
                 </div>
                 <div>
                 <a href='productedit/{$product->id}'  type="button" class="btn btn-outline-warning">Editar</a>
                 </div>
+            {/if}
                 <div>
                 <a href="products/{$product->id}" type="button" class="btn btn-outline-info">Info</a>
                 </div>

@@ -15,22 +15,30 @@ $params = explode('/', $action);
 
 //tabla de ruteo
     switch ($params[0]){
+
         case 'login':
             $authController = new AuthController();
             $authController->ShowFormLogin();
             break;
+
         case 'validate':
             $authController = new AuthController();
             $authController->ValidateUser();
             break;
-        case 'loguot':
+
+        case 'logout':
             $authController = new AuthController();
             $authController->Loguot();
             break;
+
         case 'products':
             $productsController = new ProductsController();
             $productsController->Showproducts();
             break;
+        case 'product':
+            $productsController = new ProductsController();
+            $id = $params[1];
+            $productsController->ShowProduct($id);
         
         case 'categories':
             $productsController = new ProductsController();
@@ -44,11 +52,11 @@ $params = explode('/', $action);
 
             break;
                 
-        case 'productscategories':
-            $productsController = new ProductsController();
-            $productsController->ShowProductswhithcategorie();
+        // case 'productscategories':
+        //     $productsController = new ProductsController();
+        //     $productsController->ShowProductswhithcategorie();
 
-            break;
+        //     break;
 
         case 'addproduct':
             $productsController = new ProductsController();
@@ -107,6 +115,7 @@ $params = explode('/', $action);
             $productsController = new ProductsController();
             $productsController->InsertCategoriEditByID();
             break;
+
         default:
             header('HTTP/1.0 404 Not Found');
             echo('<h1>404 page not found <h1>');

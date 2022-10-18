@@ -3,56 +3,73 @@
 require_once './app/models/products.model.php';
 require_once './app/views/products.view.php';
 require_once './app/models/categoris.model.php';
+require_once './app/helpers/auth.helper.php';
 class ProductsController {
 
     private $modelProducts;
     private $modelCategories;
     private $view;
+    private $helper;
 
     public function __construct(){
 
        $this->modelProducts = new ProductsModel();
        $this->modelCategories = new CategorisModel();
        $this->view = new ProductsView();
+       $this->helper = new AuthHelper();
 
     }
     
     public function ShowProducts(){
-
         //Pasamos las categorias por parametro para el formulario
 
         $products= $this->modelProducts->getAll();
         $categories = $this->modelCategories->getAll();
-        $this->view->Showproducts($products, $categories);
+        $this->view->Showproducts($products, $categories,$this->helper->checkLoggedIn());
     }
 
-    public function ShowProductswhithcategorie(){
+    // public function ShowProductswhithcategorie(){
 
-        $categorieproducts = $this->modelProducts->getAllProductsWhithCategories();
-        $this->view->ShowProductswhithcategorie($categorieproducts);
-    }
+    //     $categorieproducts = $this->modelProducts->getAllProductsWhithCategories();
+    //     $this->view->ShowProductswhithcategorie($categorieproducts);
+    // }
 
     public function ShowCaterogies(){
 
         $categories = $this->modelCategories->getAll();
-        $this->view->ShowCategories($categories);
+        $this->view->ShowCategories($categories, $this->helper->checkLoggedIn());
     }
 
     public function AddProduct(){
-        // Validar Producto.
 
-         $product = $_POST['producto'];
-         $price = $_POST['precio'];
-         $categorie = $_POST['categoria'];
+        $admin = $this->helper->checkLoggedIn();
+        if($admin){
+            // Validar Producto.
+    
+             $product = $_POST['producto'];
+             $price = $_POST['precio'];
+             $categorie = $_POST['categoria'];
+    
+             $this->modelProducts->InsertProduct($product, $price, $categorie);
+    
+             header("Location: " . BASE_URL);
+        } else{
 
-        $id = $this->modelProducts->InsertProduct($product, $price, $categorie);
+            header("Location: " .BASE_URL. "login");
+        }
 
-         header("Location: " . BASE_URL);
     }
     public function DeleteProduct($id){
-        $this->modelProducts->DeleteProductByID($id);
-        
-        header("Location: " . BASE_URL);
+
+        $admin = $this->helper->checkLoggedIn();
+        if($admin){
+            $this->modelProducts->DeleteProductByID($id); 
+
+                 header("Location: " . BASE_URL);
+        }else{
+
+            header("Location: " .BASE_URL. "login");
+        }
     }
     // public function EditProductByID($id){
     //     if(!isset($_GET[$id])){
@@ -63,12 +80,28 @@ class ProductsController {
     //     $this->modelProducts->ProductEditByID($id);
     // }
     public function ShowEditProductForm($id){
-        $producteditable = $this->modelProducts->ProductEditByID($id);
-        $categories = $this->modelCategories->getAll();
-        $this->view->ShowEditProductForm($producteditable, $categories);
+
+        $admin = $this->helper->checkLoggedIn();
+
+        if($admin){
+
+            $producteditable = $this->modelProducts->ProductEditByID($id);
+            $categories = $this->modelCategories->getAll();
+            $this->view->ShowEditProductForm($producteditable, $categories);
+
+        } else{
+
+            header("Location: " .BASE_URL. "login");
+
+        }
+
     }
 
      public function InsertProductEditByID(){
+
+        $admin = $this->helper->checkLoggedIn();
+        if($admin){
+
        // if(!empty($_POST['producto']||$_POST['precio']
        //     ||$_POST['categoria']||$_POST['id_producto'])){
         // MENSAJE DE ERROR
@@ -80,12 +113,25 @@ class ProductsController {
         $this->modelProducts->InsertEditProductByID($producto,$precio,$categoria,$id);
 
         header("Location: " . BASE_URL);
+       }
+       else{
+        header("Location: " .BASE_URL. "login");
+       }
     } 
 
     public function ShowEditCategoriForm($id){
+         $admin = $this->helper->checkLoggedIn();
+        if($admin){
 
-        $categoriaeditable = $this->modelCategories->CategorieEditByID($id);
-        $this->view->ShowEditCategorieForm($categoriaeditable);
+           $categoriaeditable = $this->modelCategories->CategorieEditByID($id);
+           $this->view->ShowEditCategorieForm($categoriaeditable);
+
+        } else{
+
+            header("Location: " .BASE_URL. "login");
+        }
+       
+
     }
 
     public function InsertCategoriEditByID(){
@@ -101,17 +147,32 @@ class ProductsController {
 
     public function AddCategorie(){
 
+         $admin = $this->helper->checkLoggedIn();
+        if($admin){
+
         $categorie = $_POST['categorie'];
         $this->modelCategories->InsertCategorieEditByID($categorie);
 
         header("Location: " .BASE_URL ."categories");
+        } else {
+
+            header("Location: " .BASE_URL. "login");
+        }
     }
 
     public function DeleteCategorie($id){
+
+        $admin = $this->helper->checkLoggedIn();
+        if($admin){
         // Si la categoria contiene un arreglo devolver mensaje de no se puede borrar.
 
         $this->modelCategories->DeleteCategorieByID($id);
         
         header("Location: " .BASE_URL ."categories");
+
+        } else{
+            
+             header("Location: " .BASE_URL. "login");
+        }
     }
 }

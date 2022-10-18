@@ -10,19 +10,21 @@
         $this->smarty = new Smarty(); 
     }
 
-     function Showproducts($products, $categories){
+     function Showproducts($products, $categories, $admin){
       
          //asigno variables a smarty.
 
         $this->smarty->assign('products', $products);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->assign('categories', $categories);
         $this->smarty->display('products.tpl');
 
      }
 
-     function ShowCategories($categories){
+     function ShowCategories($categories, $admin){
 
         $this->smarty->assign('categories', $categories);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->display('categories.tpl');
      }
 
@@ -45,5 +47,10 @@
 
          $this->smarty->assign('categorie', $categoriaeditable);
          $this->smarty->display('categorie.edit.tpl');
+      }
+
+      public function ShowProduct(){
+         $this->smarty->assign('product',);
+         $this->smarty->display();
       }
  }

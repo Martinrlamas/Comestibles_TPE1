@@ -1,15 +1,24 @@
 <?php
 class AuthHelper {
 
-    /**
-    * Verifica que el user este logueado y si no lo está
-    * lo redirige al login.
-    */
+    // solo si esta logueado retorna verdadero. y habilita a las funciones de administrador.
    public function checkLoggedIn() {
-       session_start();
-       if (!isset($_SESSION['IS_LOGGED'])) {
-           header("Location: " . BASE_URL . 'login');
-           die();
-       }
-   } 
+        session_start();
+    if (!isset($_SESSION['IS_LOGGED'])){
+
+        return false;
+
+    }else {
+           return true;
+    } 
+    }
 }
+
+// public function checkLoggedIn() {
+//     session_start();
+//     if (!isset($_SESSION['IS_LOGGED'])) {
+//         header("Location: " . BASE_URL . 'login');
+//         die();
+//     }
+// } 
+// }

@@ -9,7 +9,7 @@
 
         public function __construct(){
             $this->view = new AuthView();
-            $this->mdodel = new UserModel();
+            $this->model = new UserModel();
         }
         
         public function ShowFormLogin(){
@@ -25,7 +25,8 @@
             $user = $this->model->getUserByEmail($email);
         //verifico que el usuario existe y que las contraseñas son iguales.
 
-            if($user && password_verify($password, $user->password)){
+            if($user && password_verify($password, $user->password)) {
+
                 //inicio uan session para este usuario.
                 session_start();
             $_SESSION['USER_ID'] = $user->id;
@@ -33,8 +34,8 @@
             $_SESSION['IS_LOGGED'] = true;
 
                 header("Location: " . BASE_URL);
-            }
-            else{
+            } else{
+
                 // Si los datos son incorrectos muestro el form con un error.
                 $this->view->ShowFormLogin("El usuario o la contraseña no existe");
             }
@@ -42,7 +43,7 @@
         public function Loguot(){
             session_start();
             session_destroy();
-            header("Location: " .BASE_URL);
+            header("Location: " . BASE_URL);
         }
         
     }

@@ -22,6 +22,9 @@ class ProductsModel{
             
             return $products;
         } 
+        public function GET(){
+            $query = $this->db->prepare("SELECT ");
+        }
         // Toma todos los productos por su categoria correspondiente.
         public function getAllProductsWhithCategories(){
 
